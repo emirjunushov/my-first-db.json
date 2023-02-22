@@ -1,0 +1,92 @@
+body {
+  background-image: url(https://images.pexels.com/photos/1468419/pexels-photo-1468419.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+  background-size: cover;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.btnAdd {
+  width: 100px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+/*! style of input focus start */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6%;
+}
+.block-1 {
+  position: relative;
+  margin: 20px;
+}
+.input-class {
+  text-align: center;
+  color: white;
+  padding: 6px 12px;
+  border: 2px solid #fff;
+  outline: 0;
+  width: 287px;
+  height: 34px;
+  background: transparent;
+  position: relative;
+  z-index: 9;
+}
+.block-1 label {
+  position: absolute;
+  color: #fff;
+  top: 50%;
+  left: -11px;
+  transform: translate(50%, -50%);
+  transition: 0.5s;
+}
+.my-border::before,
+.my-border::after {
+  position: absolute;
+  content: "";
+  background-color: transparent;
+  border-style: solid;
+  border-width: 0px;
+  border-color: #000;
+  height: 0%;
+  width: 0%;
+  z-index: 9;
+  transition: 0.5s;
+}
+
+.my-border::before {
+  right: 0;
+  bottom: 0;
+}
+.my-border::after {
+  left: 0;
+  top: 0;
+}
+.input-class:focus ~ .my-border::before {
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  width: 99%;
+  height: 94%;
+  transition: 0.5s;
+}
+.input-class:focus ~ .my-border::after {
+  border-left-width: 2px;
+  border-top-width: 2px;
+  width: 99%;
+  height: 94%;
+  transition: 0.5s;
+}
+.input-class:focus ~ label {
+  top: -20%;
+  left: -19px;
+  transition: 0.5s;
+}
+/*! style of input focus end */

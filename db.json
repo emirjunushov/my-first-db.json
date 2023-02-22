@@ -1,16 +1,8 @@
 {
   "contactbook": [
     {
-      "name": "Emir",
-      "surname": "Junushov",
-      "photo": "https://i.pinimg.com/564x/ff/d8/83/ffd8834bd2a73d6bf45a3e333034dfaa.jpg",
-      "number": "0501846868",
-      "email": "emirdzunusov49@gmail.com",
-      "id": 1
-    },
-    {
-      "name": "Beka",
-      "surname": "Osmonaliev",
+      "name": "bekzat",
+      "surname": "junushov",
       "photo": "https://i.pinimg.com/564x/9f/7a/22/9f7a220a4a750b28e659a858050d82e6.jpg",
       "number": "0707770088",
       "email": "dzhunushov.004@icloud.com",
@@ -25,12 +17,12 @@
       "id": 3
     },
     {
-      "name": "Nuray",
-      "surname": "Bekmirova",
-      "photo": "https://i.pinimg.com/564x/8a/48/24/8a482472ddd198659d23623b7c8ec314.jpg",
-      "number": "090904950945",
+      "name": "Sheraman",
+      "surname": "bilbeim",
+      "photo": "https://i.pinimg.com/564x/45/79/7c/45797c675c93fe3641e1e4d1bb363d0b.jpg",
+      "number": "0707890606980",
       "email": "emirdzunusov49@gmail.com",
-      "id": 4
+      "id": 3
     }
   ]
 }

@@ -1,4 +1,4 @@
-const API = "http://localhost:8000/contactbook";
+const API = " http://localhost:8000/contactbook";
 const list = document.querySelector(".main-list");
 const search = document.querySelector("#search");
 
@@ -36,7 +36,7 @@ function render(todos) {
   //перебираем данные полученные с сервера и на каждый обькт одрисовываем элемент li
   todos.forEach((item) => {
     list.innerHTML += `
-      <div class="card" style="width: 17rem; margin: 2rem;text-align: center;background: transparent;    border: 1px solid white;">
+      <div class="card" style="width: 17rem; margin: 2rem;text-align: center;background: transparent;    ">
       <img src=${item.photo} class="card-img-top" style="width: 125px;
       border-radius: 50%;     margin-left: 26%;
       height: 125px; object-fit: cover;" alt="...">
@@ -57,6 +57,10 @@ function render(todos) {
       width: 72px;">
       Delete
     </button>
+    <button  style="    background: transparent;
+    color: white;
+    border: 1px solid white;
+    width: 72px;" onclick ="editTodo(${item.id})" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></div>
  
       </div>
     </div>
@@ -75,13 +79,52 @@ async function deleteTodo(id) {
   }
 }
 
-// const users = [
-//   { name: "Emir", age: 23 },
-//   { name: "AbaEs", age: 13 },
-//   { name: "Nurma", age: 14 },
-//   { name: "Erthhan", age: 20 },
-// ];
-// const us = users.filter((item) => {
-//   return item.name.includes("Em");
-// });
-// console.log(us);
+// //!=======================================================edit
+let inpEdit = document.querySelectorAll(".inp-edit");
+let saveBtn = document.querySelector(".save-btn");
+let editModal = document.querySelector("#exampleModal");
+
+let editedObj = {};
+
+inpEdit.forEach((item) => {
+  console.log(item);
+  item.addEventListener("input", (e) => {
+    editedObj[e.target.name] = e.target.value;
+  });
+});
+console.log(editedObj);
+
+async function editTodo(id) {
+  try {
+    let res = await fetch(`${API}/${id}`);
+
+    let objToEdit = await res.json();
+    console.log(objToEdit);
+
+    inpEdit.forEach((i) => {
+      console.log(i);
+      i.value = objToEdit[i.name];
+    });
+    saveBtn.setAttribute("id", `${id}`);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+saveBtn.addEventListener("click", async (e) => {
+  let id = e.target.id;
+  try {
+    await fetch(`${API}/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(editedObj),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  getTodos();
+  let modal = bootstrap.Modal.getInstance(editModal);
+  modal.hide();
+});
